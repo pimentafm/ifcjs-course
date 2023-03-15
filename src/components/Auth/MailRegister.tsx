@@ -1,12 +1,37 @@
-import { FC, useState } from "react";
+import { FC, useState, FormEvent } from "react";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { useUserContext } from "../../UserProvider";
+import { async } from "@firebase/util";
 
 export const MailRegister: FC = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const auth = getAuth();
+  const [user, setUser] = useUserContext();
+
+  const onRegister = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const response = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const newUser = response.user;
+    await updateProfile(newUser, { displayName: name });
+
+    setUser(user);
+  };
+
   return (
-    <form className="contentFlexVertical">
+    <form className="contentFlexVertical" onSubmit={onRegister}>
       <label className="coolLabel">
         Full Name
         <input
@@ -23,7 +48,7 @@ export const MailRegister: FC = () => {
           className="coolField"
           type="email"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         ></input>
       </label>
 
@@ -33,7 +58,7 @@ export const MailRegister: FC = () => {
           className="coolField"
           type="password"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         ></input>
       </label>
 

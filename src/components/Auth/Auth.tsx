@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { GoogleAuth } from "./GoogleAuth";
+import { MailLogin } from "./MailLogin";
 import { MailRegister } from "./MailRegister";
 
 export const Auth: FC = () => {
@@ -9,7 +10,10 @@ export const Auth: FC = () => {
         <GoogleAuth />
       </div>
       <div>
-        <MailRegister />{" "}
+        <MailRegister />
+      </div>
+      <div>
+        <MailLogin />
       </div>
     </div>
   );
