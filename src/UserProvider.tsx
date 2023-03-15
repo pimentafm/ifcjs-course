@@ -1,5 +1,11 @@
 import { User } from "firebase/auth";
-import { FC, createContext, PropsWithChildren, useState } from "react";
+import {
+  FC,
+  createContext,
+  PropsWithChildren,
+  useState,
+  useContext,
+} from "react";
 
 export const userContext = createContext<
   [User | null, (user: User | null) => void]
@@ -13,4 +19,8 @@ export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
       {children}
     </userContext.Provider>
   );
+};
+
+export const useUserContext = () => {
+  return useContext(userContext);
 };
