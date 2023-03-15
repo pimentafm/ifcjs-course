@@ -1,8 +1,12 @@
 import { FC } from "react";
 import "./App.css";
 
-import { getApp } from "firebase/app";
+import { Main } from "./components/Main";
 
 export const App: FC = () => {
-  return <div>{JSON.stringify(getApp())}</div>;
+  return (
+    <div>
+      <Main />
+    </div>
+  );
 };
