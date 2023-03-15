@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { GoogleAuth } from "./GoogleAuth";
+import { MailRegister } from "./MailRegister";
 
 export const Auth: FC = () => {
   return (
@@ -7,8 +8,9 @@ export const Auth: FC = () => {
       <div>
         <GoogleAuth />
       </div>
-      <div>Mail Register</div>
-      <div>Mail Login</div>
+      <div>
+        <MailRegister />{" "}
+      </div>
     </div>
   );
 };

@@ -19,6 +19,17 @@
     gap: 32px;
 }
 
+.coolLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.coolField {
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #000;
+}
+
 .coolButton {
     border: none;
     padding: 0.375rem 0.75rem;
