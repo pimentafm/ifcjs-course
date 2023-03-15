@@ -27,3 +27,7 @@
     color: #fff;
     cursor: pointer;
 }
+
+.redButton {
+    background-color: #e45858;
+}
