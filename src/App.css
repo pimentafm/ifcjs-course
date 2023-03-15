@@ -6,6 +6,13 @@
     height: 100vh;
 }
 
+.contentFlexVertical {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+}
+
 .contentGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
