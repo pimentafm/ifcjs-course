@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { Auth } from "./Auth/Auth";
+import { User } from "./User/User";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useUserContext } from "../UserProvider";
@@ -18,8 +19,6 @@ export const Main: FC = () => {
     });
   }, []);
   return (
-    <div className="centerContainer">
-      {Boolean(user) ? user?.displayName : <Auth />}
-    </div>
+    <div className="centerContainer">{Boolean(user) ? <User /> : <Auth />}</div>
   );
 };
