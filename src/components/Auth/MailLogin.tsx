@@ -1,11 +1,21 @@
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export const MailLogin: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const auth = getAuth();
+
+  const onLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    await signInWithEmailAndPassword(auth, email, password);
+  };
+
   return (
-    <form className="contentFlexVertical">
+    <form className="contentFlexVertical" onSubmit={onLogin}>
       <label className="coolLabel">
         Email address
         <input
@@ -27,7 +37,7 @@ export const MailLogin: FC = () => {
       </label>
 
       <button type="submit" className="coolButton">
-        Register
+        Login
       </button>
     </form>
   );
